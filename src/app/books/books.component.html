@@ -1,0 +1,12 @@
+<h2>Books for Sale</h2>
+<ul class="books">
+  <li *ngFor="let book of books">
+    <h1>{{book.title}}</h1>
+    <h2>{{book.subtitle}}</h2>
+    <div><span> <a href="{{book.website}}" alt="">Visit Website</a> </span></div>
+    <div><span>id: </span>{{book.id}}</div>
+    <div><span>Description: </span>{{book.description}}</div>
+    <div><span>Price: </span>{{book.price / 100 | currency}}</div>
+    <div><button id={{book.id}}>Add to Cart</button></div>
+  </li>
+</ul>
