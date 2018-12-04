@@ -3,6 +3,11 @@ import { Book } from './book'
 import { BOOKS } from './mock-books'
 import { Observable, of } from 'rxjs'
 import { MessageService } from './message.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+}
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +15,25 @@ import { MessageService } from './message.service';
 
 export class BookService {
 
-  constructor(private messageService: MessageService) { }
+  private booksURL = 'http://localhost:8082/api/books';  // URL to web api
 
-  getHeroes(): Observable<Book[]> {
-    // TODO: send the message _after_ fetching the books
-    this.messageService.add('BookService: fetched books');
-    return of(BOOKS);
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService) { }
+
+  /** GET heroes from the server */
+  getBooks(): Observable<Book[]> {
+    return this.http.get<Book[]>(this.booksURL)
+  }
+
+  getBook(id: number): Observable<Book> {
+    // TODO: send the message _after_ fetching the book
+    this.messageService.add(`BookService: fetched book id=${id}`);
+    return of(BOOKS.find(book => book.id === id));
+  }
+
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add(`HeroService: ${message}`);
   }
 }

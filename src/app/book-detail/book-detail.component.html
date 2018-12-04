@@ -1,0 +1,9 @@
+<div *ngIf="book">
+  <h2>{{book.title | uppercase}} Details</h2>
+  <div><span>id: </span>{{book.id}}</div>
+  <div><span>Title: </span>{{book.title}}</div>
+  <div><span>Subtitle: </span>{{book.subtitle}}</div>
+  <div><span>Description: </span>{{book.description}}</div>
+  <div><span>Price: </span>{{book.price / 100 | currency}}</div>
+  <button (click)="goBack()">Go Back</button>
+</div>
