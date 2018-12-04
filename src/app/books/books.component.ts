@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core'
 import { Book } from '../book'
 import { BOOKS } from '../mock-books';
+import { BookService } from '../book.service'
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
+
 export class BooksComponent implements OnInit {
 
-  books = BOOKS
+  books: Book[]
 
   book: Book = {
     id: 1,
@@ -20,9 +22,15 @@ export class BooksComponent implements OnInit {
     website: "http://placekitten.com/200/300",
   };
 
-  constructor() { }
+  constructor(private bookService: BookService) { }
 
   ngOnInit() {
+    this.getHeroes();
+  }
+
+  getHeroes(): void {
+    this.bookService.getHeroes()
+      .subscribe(books => this.books = books);
   }
 
 }
