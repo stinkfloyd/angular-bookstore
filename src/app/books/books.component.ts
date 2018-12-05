@@ -29,4 +29,8 @@ export class BooksComponent implements OnInit {
       .subscribe(books => this.books = books);
   }
 
+  delete(book: Book): void {
+    this.books = this.books.filter(b => b !== book);
+    this.bookService.deleteBook(book).subscribe();
+  }
 }

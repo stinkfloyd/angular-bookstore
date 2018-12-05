@@ -1,26 +1,26 @@
 <div *ngIf="book">
   <h2>Edit {{book.title | uppercase}} Details</h2>
-  <div><span><strong>ID: </strong></span>{{book.id}}</div>
+  <div><span><strong>ID: </strong></span>{{book.id}}</div><br />
   <div>
-    <label><strong>Title: </strong>
+    <label><strong>Title: </strong><br />
       <input [(ngModel)]="book.title" placeholder="title">
     </label>
   </div>
   <div>
-    <label><strong>Subtitle: </strong>
+    <label><strong>Subtitle: </strong><br />
       <input [(ngModel)]="book.subtitle" placeholder="subtitle">
     </label>
   </div>
   <div>
-    <label><strong>Description: </strong>
-      <textarea rows="4" cols="50" [(ngModel)]="book.description" placeholder="subtitle"></textarea>
+    <label><strong>Description: </strong><br />
+      <textarea rows="4" cols="61" [(ngModel)]="book.description" placeholder="subtitle"></textarea>
     </label>
   </div>
   <div>
-    <label><strong>Price: </strong>
+    <label><strong>Price: </strong><br />
       <input [(ngModel)]="book.price" placeholder="price">
     </label>
   </div>
   <button (click)="goBack()">Go Back</button>
-  <button (click)="save()">save</button>
+  <button (click)="save()">Save</button>
 </div>

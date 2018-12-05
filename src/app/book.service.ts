@@ -51,6 +51,18 @@ export class BookService {
       );
   }
 
+  /** DELETE: delete the book from the server */
+  deleteBook(book: Book | number): Observable<Book> {
+    const id = typeof book === 'number' ? book : book.id;
+    const url = `${this.booksURL}/${id}`;
+
+    return this.http.delete<Book>(url, httpOptions)
+      .pipe(
+        tap(_ => this.log(`deleted book id=${id}`)),
+        catchError(this.handleError<Book>('deleteBook'))
+      );
+  }
+
   /** Log a BookService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`BookService: ${message}`);

@@ -4,5 +4,6 @@
     <a routerLink="/detail/{{book.id}}">
       <span class="badge">{{book.id}}</span> {{book.title}}
     </a>
+    <button class="delete" title="delete book" (click)="delete(book)">x</button>
   </li>
 </ul>
