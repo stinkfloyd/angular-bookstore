@@ -16,15 +16,6 @@ export class BooksComponent implements OnInit {
     this.selectedBook = book;
   }
 
-  book: Book = {
-    id: 1,
-    title: "Javascript for Dummies",
-    subtitle: "Subtitle for Dummies",
-    description: "It's a book",
-    price: "500",
-    website: "http://placekitten.com/200/300",
-  };
-
   constructor(private bookService: BookService) { }
 
   ngOnInit() {

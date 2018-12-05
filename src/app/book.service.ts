@@ -26,8 +26,8 @@ export class BookService {
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.booksURL)
       .pipe(
-        tap(_ => this.log('fetched heroes')),
-        catchError(this.handleError('getHeroes', []))
+        tap(_ => this.log('fetched books')),
+        catchError(this.handleError('getBooks', []))
       );
   }
 
@@ -53,7 +53,7 @@ export class BookService {
 
   /** Log a BookService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+    this.messageService.add(`BookService: ${message}`);
   }
 
   /**
